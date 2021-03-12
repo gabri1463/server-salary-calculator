@@ -19,7 +19,7 @@ function renderDOM() {
     $( '#multiply' ).on( 'click', appendData );
     $( '#divide' ).on( 'click', appendData );
     $( '#dot' ).on( 'click', appendData );
-    $( '#equals' ).on( 'click', addData);
+    $( '#equals' ).on( 'click', isInputDataValid);
     $( '#clear' ).on( 'click', clearData);
 
     getData();
@@ -96,3 +96,25 @@ function getData() {
         console.log( err );
     })
 } // end getData
+
+function isInputDataValid() {
+    console.log(typeof Number(inputData[0]));
+    if( typeof Number(inputData[0]) ) {
+        if( inputData.includes('+') || inputData.includes('-') || inputData.includes('*') || inputData.includes('/')) {
+            if( typeof Number( inputData[inputData.length - 1] ) ) {
+                addData();
+            }
+        }
+    }
+    else {
+        clearInput();
+    alert( 'enter a valid argument' );
+    }
+    
+} // end isInputDataValid
+
+function clearInput() {
+    let el = $( '#dataIn' );
+    el.empty();
+    el.val( '' );
+} // end clearInput
