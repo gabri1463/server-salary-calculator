@@ -22,6 +22,8 @@ function renderDOM() {
     $( '#equals' ).on( 'click', addData);
     $( '#clear' ).on( 'click', clearData);
 
+    getData();
+
 } // end renderDOM
 
 function appendData() {
