@@ -1,6 +1,6 @@
 $( document ).ready( renderDOM );
 
-let inputData = [];
+let inputData = '';
 
 function renderDOM() {
     // click handlers
@@ -31,12 +31,10 @@ function appendData() {
     // empty input 
     el.empty();
     // push value into array
-    inputData.push($( this ).data( 'value' ));
+    inputData += ($( this ).data( 'value' ));
     console.log(inputData);
     // append to input
-    for( let i = 0; i < inputData.length; i++) {
-        el.append(`${inputData[i]}`)
-    }
+    el.append(`${inputData}`)
 } // end appendData
 
 function clearData() {
@@ -45,7 +43,7 @@ function clearData() {
     // empty element
     el.empty();
     // empty array
-    inputData.splice(0, inputData.length)
+    inputData = '';
 } // end clearData
 
 function addData() {
