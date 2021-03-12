@@ -1,4 +1,4 @@
 .DS_Store
 node_modules/
-server/vendors//bootstrap.min.css
-server/vendors/bootstrap.map.min.css
+bootstrap.min.css
+bootstrap.min.css.map

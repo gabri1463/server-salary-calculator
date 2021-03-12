@@ -15,3 +15,8 @@ app.listen( port, ( req, res )=>{
 })
 
 // routes
+
+app.post( '/tabulate', ( req, res )=>{
+    console.log( 'in /tabulate POST', req.body);
+    res.send( 'bleat' );
+} )
