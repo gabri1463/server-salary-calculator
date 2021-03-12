@@ -27,7 +27,7 @@ function renderDOM() {
 function appendData() {
     console.log( 'in appendData' );
     // target input 
-    let el = $( '#dataOut' );
+    let el = $( '#dataIn' );
     // empty input 
     el.empty();
     // push value into array
@@ -39,7 +39,7 @@ function appendData() {
 
 function clearData() {
     // target element
-    let el = $( '#dataOut' )
+    let el = $( '#dataIn' )
     // empty element
     el.empty();
     // empty array
@@ -47,6 +47,50 @@ function clearData() {
 } // end clearData
 
 function addData() {
-
+    console.log( 'in addData' );
+    // make an AJAX call to server to send inputData via POST
+    let objectToSend = {
+        argument: inputData
+    }
+    $.ajax({
+        type: "POST",
+        url: '/calculate',
+        data: objectToSend
+    }).then( function( response ) {
+        console.log( 'back from POST with:', response);
+        // if successful update DOM
+        getData();
+    }).catch( function( err) {
+        // catch any errors
+        alert( 'error sending calculation');
+        console.log( err );
+    })
+    // end AJAX 
 }
 
+function getData() {
+    console.log( 'in getData' );
+    // make an AJAX call to server to get calculations via GET
+    $.ajax({
+        type: "GET",
+        url: '/calculate'
+    }).then( function( response ){
+        console.log( 'back from GET:', response);
+        let el = $( '#dataOut' );
+        el.empty();
+        // if successful loop through response
+        for( let i = 0; i < response.length; i++){
+            $( '#dataOut' ).append(
+                `
+                <li class="list-group-item">${response[i].argument} = ${response[i].answer}</li>
+                `
+            );
+            // append each to the DOM
+        } // end for
+        
+    }).catch( function( err) {
+        // catch any errors
+        alert( 'error in getting calculations');
+        console.log( err );
+    })
+} // end getData
