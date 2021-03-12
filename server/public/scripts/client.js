@@ -98,73 +98,18 @@ function getData() {
 } // end getData
 
 function isInputDataValid() {
-    if( typeof Number(inputData[0]) === 'number' ) {
-        if( inputData.includes('+') || inputData.includes('-') || inputData.includes('*') || inputData.includes('/')) {
-            console.log(inputData.indexOf('*'));
-            let add = inputData.indexOf('+');
-            let minus = inputData.indexOf('-');
-            let times = inputData.indexOf('*');
-            console.log( inputData[times+1]);
-            console.log(typeof (inputData.charCodeAt(times + 1)));
-            let divide = inputData.indexOf('/');
-            let valid = false;
-            if( add !== -1 ) {
-                if( typeof Number( inputData.charCodeAt( add + 1)) === 'number' ) {
-                    valid = true;
-                }
-                else{
-                    valid = false;
-                }
-            } // end if add is defined
-            if( minus !== -1 ){
-                if( typeof Number(inputData.charCodeAt( minus + 1)) === 'number' ) {
-                    valid = true;
-                }
-                else{
-                    valid = false;
-                }
-            } // end if minus is defined
-            if( times !== -1 ){
-                if( typeof Number( inputData.charCodeAt( times + 1)) === 'number' ) {
-                    valid = true;
-                }
-                else{
-                    valid = false;
-                }
-            }
-            if( divide !== -1 ){
-                if( typeof Number( inputData.charCodeAt( divide + 1)) === 'number' ) {
-                    valid = true;
-                }
-                else{
-                    valid = false;
-                }
-            }
-            if( valid ) {
-                if( typeof Number( inputData[inputData.length - 1] ) ) {
-                    clearInput();
-                    addData();
-                }
-                else {
-                    clearInput();
-                    alert( 'enter a valid argument' );
-                }
-            }
-            else {
-                    clearInput();
-                    alert( 'enter a valid argument' );
-                }
-            
-        }
-        else {
+  if( typeof Number(inputData[0]) ) {
+    if( inputData.includes('+') || inputData.includes('-') || inputData.includes('*') || inputData.includes('/')) {
+        if( typeof Number( inputData[inputData.length - 1] ) ) {
             clearInput();
-            alert( 'enter a valid argument' );
+            addData();
         }
     }
-    else {
-        clearInput();
-        alert( 'enter a valid argument' );
-    }
+}
+else {
+    clearInput();
+    alert( 'enter a valid argument' );
+}  
 } // end isInputDataValid
 
 function clearInput() {
@@ -174,15 +119,71 @@ function clearInput() {
     dataInput = '';
 } // end clearInput
 
-// if( typeof Number(inputData[0]) ) {
-//     if( inputData.includes('+') || inputData.includes('-') || inputData.includes('*') || inputData.includes('/')) {
-//         if( typeof Number( inputData[inputData.length - 1] ) ) {
+
+// if( typeof Number(inputData[0]) === 'number' ) {
+//         if( inputData.includes('+') || inputData.includes('-') || inputData.includes('*') || inputData.includes('/')) {
+//             console.log(inputData.indexOf('*'));
+//             let add = inputData.indexOf('+');
+//             let minus = inputData.indexOf('-');
+//             let times = inputData.indexOf('*');
+//             console.log( inputData[times+1]);
+//             console.log(typeof (inputData.charCodeAt(times + 1)));
+//             let divide = inputData.indexOf('/');
+//             let valid = false;
+//             if( add !== -1 ) {
+//                 if( typeof Number( inputData.charCodeAt( add + 1)) === 'number' ) {
+//                     valid = true;
+//                 }
+//                 else{
+//                     valid = false;
+//                 }
+//             } // end if add is defined
+//             if( minus !== -1 ){
+//                 if( typeof Number(inputData.charCodeAt( minus + 1)) === 'number' ) {
+//                     valid = true;
+//                 }
+//                 else{
+//                     valid = false;
+//                 }
+//             } // end if minus is defined
+//             if( times !== -1 ){
+//                 if( typeof Number( inputData.charCodeAt( times + 1)) === 'number' ) {
+//                     valid = true;
+//                 }
+//                 else{
+//                     valid = false;
+//                 }
+//             }
+//             if( divide !== -1 ){
+//                 if( typeof Number( inputData.charCodeAt( divide + 1)) === 'number' ) {
+//                     valid = true;
+//                 }
+//                 else{
+//                     valid = false;
+//                 }
+//             }
+//             if( valid ) {
+//                 if( typeof Number( inputData[inputData.length - 1] ) ) {
+//                     clearInput();
+//                     addData();
+//                 }
+//                 else {
+//                     clearInput();
+//                     alert( 'enter a valid argument' );
+//                 }
+//             }
+//             else {
+//                     clearInput();
+//                     alert( 'enter a valid argument' );
+//                 }
+            
+//         }
+//         else {
 //             clearInput();
-//             addData();
+//             alert( 'enter a valid argument' );
 //         }
 //     }
-// }
-// else {
-//     clearInput();
-//     alert( 'enter a valid argument' );
-// }
+//     else {
+//         clearInput();
+//         alert( 'enter a valid argument' );
+//     }
